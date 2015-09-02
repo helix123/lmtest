@@ -45,7 +45,6 @@ bgtest <- function(formula, order = 1, order.by = NULL, type = c("Chisq", "F"), 
 
   cf <- auxfit$coefficients
   vc <- chol2inv(auxfit$qr$qr) * sum(auxfit$residuals^2) / auxfit$df.residual
-  colnames(X)[1] <- as.character(terms(formula)[[2]]) # set name for first indep. var in aux. regression (= name dep. var from original regression)
   names(cf) <- colnames(vc) <- rownames(vc) <- c(colnames(X), paste("lag(resid)", order, sep = "_"))
 
   switch(match.arg(type),
