@@ -34,6 +34,7 @@ gqtest <- function(formula, point = 0.5, fraction = 0,
   {
     if(inherits(order.by, "formula")) {
       z <- model.matrix(order.by, data = data)
+      z <- z[rownames(z) %in% rownames(X), ] # added this line
       z <- as.vector(z[,ncol(z)])
     } else {
       z <- order.by
